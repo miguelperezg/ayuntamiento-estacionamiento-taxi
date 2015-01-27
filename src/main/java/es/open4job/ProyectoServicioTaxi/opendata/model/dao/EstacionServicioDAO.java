@@ -8,8 +8,11 @@ import java.util.ArrayList;
 
 import es.open4job.ProyectoServicioTaxi.opendata.model.vo.EstacionServicio;
 
-public class EstacionServicioDO {
+public class EstacionServicioDAO extends AbstractDAO {
 
+	public EstacionServicioDAO(String driver, String url, String user, String password){
+		 super(driver, url, user, password);
+	}
 	// Listado de la estacion de servicio
 	
 		public ArrayList<EstacionServicio> getlistataxi(Connection conexion) throws SQLException {

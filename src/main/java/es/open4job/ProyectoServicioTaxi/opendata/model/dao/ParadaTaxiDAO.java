@@ -9,7 +9,11 @@ import java.util.ArrayList;
 import es.open4job.ProyectoServicioTaxi.opendata.model.vo.ParadaTaxi;
 
 
-public class ParadaTaxiDO {
+public class ParadaTaxiDAO extends AbstractDAO{
+	
+	public ParadaTaxiDAO(String driver, String url, String user, String password){
+		 super(driver, url, user, password);
+	}
 
 	// Listado de las paradas de taxi
 	
