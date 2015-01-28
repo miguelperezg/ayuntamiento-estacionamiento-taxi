@@ -6,41 +6,64 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+
+
 import es.open4job.ProyectoServicioTaxi.opendata.model.vo.ParadaTaxi;
 
+public class ParadaTaxiDAO {
 
-public class ParadaTaxiDAO extends AbstractDAO{
-	
-	public ParadaTaxiDAO(String driver, String url, String user, String password){
-		 super(driver, url, user, password);
+	public ParadaTaxiDAO() {
 	}
 
 	// Listado de las paradas de taxi
-	
-	public ArrayList<ParadaTaxi> getlistataxi(Connection conexion) throws SQLException {
-	
+
+	public ArrayList<ParadaTaxi> getListadoParadaTaxi(Connection conexion)
+			throws SQLException {
+
 		ArrayList<ParadaTaxi> lista = new ArrayList<ParadaTaxi>();
+
 		PreparedStatement st = conexion.prepareStatement("SELECT * FROM PARADA_TAXI");
 		ResultSet rs = st.executeQuery();
-		while(rs.next()){
-			lista.add(new ParadaTaxi(rs.getInt(1),rs.getString(2),rs.getDate(3),rs.getFloat(4),rs.getFloat(5),rs.getString(6)));
+		while (rs.next()) {
+			lista.add(new ParadaTaxi(rs.getInt(1), rs.getString(2), rs
+					.getDate(3), rs.getFloat(4), rs.getFloat(5), rs
+					.getString(6)));
 		}
-		
-	return lista;
+		return lista;
 	}
-	
-	//Devuelve la parada del taxi por el id
-	
-	public  ParadaTaxi getparadataxi(int id, Connection conexion) throws SQLException {
-		
+
+	// Devuelve la parada del taxi por el id
+
+	public ParadaTaxi getparadataxi(int id, Connection conexion)
+			throws SQLException {
 		ParadaTaxi idLista = null;
-		PreparedStatement st = conexion.prepareStatement("SELECT * FROM PARADA_TAXI WHERE id = ?");
-		st.setInt(1, id);
-		ResultSet rs = st.executeQuery();
-		idLista = new ParadaTaxi(rs.getInt(1),rs.getString(2),rs.getDate(3),rs.getFloat(4),rs.getFloat(5),rs.getString(6));
-		
-	return idLista;
-	
+
+		ResultSet rs = null;
+		PreparedStatement stmt = null;
+
+		stmt = conexion.prepareStatement("SELECT * FROM PARADA_TAXI WHERE id = ?");
+		stmt.setInt(1, id);
+		rs = stmt.executeQuery();
+		if (rs.next()) {
+			idLista = new ParadaTaxi(rs.getInt(1), rs.getString(2),
+					rs.getDate(3), rs.getFloat(4), rs.getFloat(5),
+					rs.getString(6));
+		}
+		/*que nos lo expliquen
+		if (rs != null) {
+			try {
+				rs.close();
+			} catch (Exception e) {
+			}
+		}
+		if (stmt != null) {
+			try {
+				stmt.close();
+			} catch (Exception e) {
+			}
+		}*/
+		return idLista;
+
 	}
-	
+
 }

@@ -8,15 +8,14 @@ import java.util.ArrayList;
 
 import es.open4job.ProyectoServicioTaxi.opendata.model.vo.EstacionServicio;
 
-public class EstacionServicioDAO extends AbstractDAO {
+public class EstacionServicioDAO {
 
-	public EstacionServicioDAO(String driver, String url, String user, String password){
-		 super(driver, url, user, password);
-	}
+	
 	// Listado de la estacion de servicio
 	
-		public ArrayList<EstacionServicio> getlistataxi(Connection conexion) throws SQLException {
+		public ArrayList<EstacionServicio> getlistaServicio(Connection conexion) throws SQLException {
 		
+	
 			ArrayList<EstacionServicio> lista = new ArrayList<EstacionServicio>();
 			PreparedStatement st = conexion.prepareStatement("SELECT * FROM ESTACION_SERVICIO");
 			ResultSet rs = st.executeQuery();
@@ -35,8 +34,9 @@ public class EstacionServicioDAO extends AbstractDAO {
 			PreparedStatement st = conexion.prepareStatement("SELECT * FROM ESTACION_SERVICIO WHERE id = ?");
 			st.setInt(1, id);
 			ResultSet rs = st.executeQuery();
-			idLista = new EstacionServicio(rs.getInt(1),rs.getString(2),rs.getDate(3),rs.getFloat(4),rs.getFloat(5),rs.getString(6));
-			
+			if (rs.next()){
+				idLista = new EstacionServicio(rs.getInt(1),rs.getString(2),rs.getDate(3),rs.getFloat(4),rs.getFloat(5),rs.getString(6));
+			}
 		return idLista;
 		
 		}

@@ -5,14 +5,14 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Level;
 
-public class AbstractDAO {
+public class BaseDatosDAO {
 	private String driver;
 	private String url;
 	private String user;
 	private String password;
 	protected Connection connection = null;
 
-	public AbstractDAO(String driver, String url, String user, String password) {
+	public BaseDatosDAO(String driver, String url, String user, String password) {
 		this.driver = driver;
 		this.url = url;
 		this.user = user;
@@ -33,7 +33,7 @@ public class AbstractDAO {
 
 	public void setUrl(String url) {
 		this.url = url;
-	} EstacionServicio
+	}
 
 	public String getUser() {
 		return user;
@@ -51,10 +51,12 @@ public class AbstractDAO {
 		this.password = password;
 	}
 
-	public void abrirConexion() throws SQLException, ClassNotFoundException {
+	public Connection abrirConexion() throws SQLException, ClassNotFoundException {
+		Connection conection = null;
 		try {
 			Class.forName(driver);
 			connection = DriverManager.getConnection(url, user, password);
+			
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 			throw e;
@@ -62,12 +64,7 @@ public class AbstractDAO {
 			e.printStackTrace();
 			throw e;
 		}
-	}
-
-	public void consultas(ParadaTaxiDAO taxiDao, EstacionServicioDAO servicioDao ) throws SQLException, ClassNotFoundException {
-		this.abrirConexion();
-		taxiDao.getparadataxi(id, conexion);
-		this.cerrarConexion();
+		return connection;
 	}
 
 	public void cerrarConexion() {
