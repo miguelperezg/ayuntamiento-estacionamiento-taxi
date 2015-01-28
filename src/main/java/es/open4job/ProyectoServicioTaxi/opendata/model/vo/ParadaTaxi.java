@@ -72,5 +72,11 @@ public class ParadaTaxi {
 	public void setIcon(String icon) {
 		this.icon = icon;
 	}	
-	
+	public String toString() {
+		return ("Parada taxi : [" + "id = "
+		+ this.id + ", " + "título = "
+		+ this.title + ", " + ", fecha = " + this.fecha + ", "
+		+ ", punto = [" + this.cor_x + "," + this.cor_y + "]"
+		+ ", icono = " + this.icon );
+		}
 }
