@@ -32,7 +32,8 @@ public class EstacionServicioDAO extends AbstractDAO {
 		public  EstacionServicio getEstacionServicio(int id, Connection conexion) throws SQLException {
 			
 			EstacionServicio idLista = null;
-			PreparedStatement st = conexion.prepareStatement("SELECT * FROM ESTACION_SERVICIO WHERE id = this.id");
+			PreparedStatement st = conexion.prepareStatement("SELECT * FROM ESTACION_SERVICIO WHERE id = ?");
+			st.setInt(1, id);
 			ResultSet rs = st.executeQuery();
 			idLista = new EstacionServicio(rs.getInt(1),rs.getString(2),rs.getDate(3),rs.getFloat(4),rs.getFloat(5),rs.getString(6));
 			

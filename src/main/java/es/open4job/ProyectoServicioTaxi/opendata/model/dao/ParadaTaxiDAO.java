@@ -34,7 +34,8 @@ public class ParadaTaxiDAO extends AbstractDAO{
 	public  ParadaTaxi getparadataxi(int id, Connection conexion) throws SQLException {
 		
 		ParadaTaxi idLista = null;
-		PreparedStatement st = conexion.prepareStatement("SELECT * FROM PARADA_TAXI WHERE id = this.id");
+		PreparedStatement st = conexion.prepareStatement("SELECT * FROM PARADA_TAXI WHERE id = ?");
+		st.setInt(1, id);
 		ResultSet rs = st.executeQuery();
 		idLista = new ParadaTaxi(rs.getInt(1),rs.getString(2),rs.getDate(3),rs.getFloat(4),rs.getFloat(5),rs.getString(6));
 		
