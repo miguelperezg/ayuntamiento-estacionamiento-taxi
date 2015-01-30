@@ -64,11 +64,11 @@ public class App {
 		
 		bbdd.cerrarConexion();
 
-		// Generar informes en PDF
+		/* Generar informes en PDF
 		JasperReportGenerator jasperReport = new XXX();
 		
 		boolean estado = jasperReport.generate();
-		
+		*/
 		
 	}
 }
