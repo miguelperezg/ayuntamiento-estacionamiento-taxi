@@ -35,12 +35,10 @@ public class App {
 		try {
 			
 			Connection conexion = bbdd.abrirConexion();
-			
-			
 			ParadaTaxiDAO paradaTaxi = new ParadaTaxiDAO();
 			List<ParadaTaxi> paradasTaxi = paradaTaxi.getListadoParadaTaxi(conexion);
 			paradaTaxi.insertValues(conexion);			
-			// Prueba que valida la lista de paradas de taxis
+			//Prueba que valida la lista de paradas de taxis
 			Iterator iterator = paradasTaxi.iterator();
 			
 			while (iterator.hasNext()) {

@@ -55,7 +55,7 @@ public class BaseDatosDAO {
 		Connection conection = null;
 		try {
 			Class.forName(driver);
-			connection = DriverManager.getConnection(url, user, password);
+			conection = DriverManager.getConnection(url, user, password);
 			
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

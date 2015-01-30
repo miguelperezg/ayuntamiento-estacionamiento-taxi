@@ -23,6 +23,7 @@ public class ParadaTaxi {
 		this.fecha = fecha;
 		this.cor_x = cor_x;
 		this.cor_y = cor_y;
+		this.icon = icon;
 	}
 
 	public int getId() {
