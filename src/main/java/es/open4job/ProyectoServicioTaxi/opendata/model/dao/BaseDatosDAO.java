@@ -3,7 +3,7 @@ package es.open4job.ProyectoServicioTaxi.opendata.model.dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.logging.Level;
+
 
 public class BaseDatosDAO {
 	private String driver;
@@ -64,7 +64,7 @@ public class BaseDatosDAO {
 			e.printStackTrace();
 			throw e;
 		}
-		return connection;
+		return conection;
 	}
 
 	public void cerrarConexion() {

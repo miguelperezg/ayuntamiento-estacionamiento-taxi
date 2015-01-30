@@ -73,5 +73,12 @@ public class EstacionServicio {
 	public void setIcon(String icon) {
 		this.icon = icon;
 	}
-	
+	public String toString() {
+		return ("Estación servicio : [" + "id = "
+		+ this.id + ", " + "título = "
+		+ this.title + ", " + ", fecha = " + this.fecha + ", "
+		+ ", punto = [" + this.cor_x + "," + this.cor_y + "]"
+		+ ", icono = " + this.icon );
+		}
+
 }

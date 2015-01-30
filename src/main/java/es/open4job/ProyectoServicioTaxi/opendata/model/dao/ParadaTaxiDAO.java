@@ -49,7 +49,6 @@ public class ParadaTaxiDAO {
 					rs.getDate(3), rs.getFloat(4), rs.getFloat(5),
 					rs.getString(6));
 		}
-		/*que nos lo expliquen
 		if (rs != null) {
 			try {
 				rs.close();
@@ -61,7 +60,7 @@ public class ParadaTaxiDAO {
 				stmt.close();
 			} catch (Exception e) {
 			}
-		}*/
+		}
 		return idLista;
 
 	}
